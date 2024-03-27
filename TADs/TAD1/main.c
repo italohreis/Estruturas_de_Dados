@@ -22,5 +22,6 @@ int main(void) {
   pto_libera(&p1);
 
   printf("p1 is null --> %d", p1 == NULL);
+  
   return 0;
 }

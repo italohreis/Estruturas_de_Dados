@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include "fracao.h"
 
@@ -7,9 +8,9 @@ struct _fracao {
     int den;
 };
 
-
 Fracao *create(int x, int y) {
     Fracao *f = (Fracao *) malloc(sizeof(Fracao));
+
     if (f != NULL) {
         f->num = x;
         f->den = y;
@@ -17,11 +18,20 @@ Fracao *create(int x, int y) {
     return f;
 }
 
-float somaFracao(Fracao *f1, Fracao *f2) {
+Fracao *somaFracao(Fracao *f1, Fracao *f2) {
     int divisor = mmc(f1->den, f2->den);
 
     int numerador = (divisor / f1->den) * (f1->num) + (divisor / f2->den) * (f2->num);
-    
+
+    return create(numerador, divisor);    
+}
+
+Fracao *multiplicaFracao(Fracao *f1, Fracao *f2) {
+    return create(f1->num * f2->num, f1->den * f2->den);
+}
+
+bool verificarIgualdade(Fracao *f1, Fracao *f2) {
+    return (f1->num * f2->den) == (f1->den * f2->num);
 }
 
 int mmc(int a, int b){
@@ -36,3 +46,14 @@ int mdc(int a, int b){
     }
     return a;
 }
+
+int getNumerador(Fracao *f) {
+    return f->num;
+}
+
+int getDenominador(Fracao *f) {
+    return f->den;
+}
+
+
+
