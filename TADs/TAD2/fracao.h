@@ -20,4 +20,6 @@ int getNumerador(Fracao *f);
 
 int getDenominador(Fracao *f);
 
+void simplificar(Fracao *f);
+
 #endif

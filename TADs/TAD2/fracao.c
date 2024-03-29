@@ -23,7 +23,12 @@ Fracao *somaFracao(Fracao *f1, Fracao *f2) {
 
     int numerador = (divisor / f1->den) * (f1->num) + (divisor / f2->den) * (f2->num);
 
-    return create(numerador, divisor);    
+    /* int divisor_mdc = mdc(numerador, divisor);  // Simplificando a fracao
+
+    numerador /= divisor_mdc;   // Simplificando a fracao
+    divisor /= divisor_mdc;     // Simplificando a fracao */
+
+    return create(numerador, divisor);
 }
 
 Fracao *multiplicaFracao(Fracao *f1, Fracao *f2) {
@@ -53,6 +58,13 @@ int getNumerador(Fracao *f) {
 
 int getDenominador(Fracao *f) {
     return f->den;
+}
+
+//funcao para simplificar fracao
+void simplificar(Fracao *f){
+    int divisor = mdc(f->num, f->den);
+    f->num /= divisor;
+    f->den /= divisor;
 }
 
 
