@@ -21,7 +21,7 @@ void inserirElemento(Conjunto *c, int elemento) {
     int i;
     for (i = 0; i < c->size; i++) {
         if (c->elementos[i] == elemento) {
-            printf("\nElemento ja existente no conjunto!\n");
+            printf("\nElemento [%d] ja existente no conjunto!\n", elemento);
             return;
         }
     }
@@ -77,10 +77,80 @@ Conjunto *diferenca(Conjunto *c1, Conjunto *c2) {
     return c;
 }
 
+Conjunto *uniao(Conjunto *c1, Conjunto *c2) {
+    Conjunto *c = criarConjunto();
 
+    int i;
+    for (i = 0; i < c1->size; i++) {
+        inserirElemento(c, c1->elementos[i]);   //adiciona todos os elementos do conjunto 1 ao conjunto c
+    }
+
+    for (i = 0; i < c2->size; i++) {
+        inserirElemento(c, c2->elementos[i]);   //adiciona todos os elementos do conjunto 2 ao conjunto c
+    }
+   
+
+    return c;
+}
+
+int maiorValor(Conjunto *c) {
+    int maior = 0;
+    int i;
+    for (i = 0; i < c->size; i++) {
+        if (c->elementos[i] > maior) {
+            maior = c->elementos[i];
+        }
+    }
+
+    return maior;
+}
+
+int menorValor(Conjunto *c) {
+    int menor = c->elementos[0];
+    int i;
+
+    for (i = 1; i < c->size; i++) {
+        if (c->elementos[i] < menor) {
+            menor = c->elementos[i];
+        }
+    }
+    
+    return menor;
+}
+
+bool verificarIgualdade(Conjunto *c1, Conjunto *c2) {
+    if (c1->size != c2->size) {
+        return false;
+    }
+
+    bool igualdade = false;
+    int i, j;
+
+    for (i = 0; i < c1->size; i++) {
+        for (j = 0; j < c2->size; j++) {
+
+            if (c1->elementos[i] == c2->elementos[j]) {
+                igualdade = true;
+                break;
+            } else {
+                igualdade = false;
+            }
+
+        }
+        if (igualdade == false) {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 int tamanhoConjunto(Conjunto *c) {
     return c->size;
+}
+
+bool conjuntoVazio(Conjunto *c) {
+    return c->size == 0;    //retorna verdadeiro se o conjunto estiver vazio, caso contrario retorna falso
 }
 
 void printConjunto(Conjunto *c) {

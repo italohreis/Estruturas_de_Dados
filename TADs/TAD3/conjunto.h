@@ -16,6 +16,10 @@ Conjunto *diferenca(Conjunto *c1, Conjunto *c2);
 
 Conjunto *uniao(Conjunto *c1, Conjunto *c2);
 
+int maiorValor(Conjunto *c);
+
+int menorValor(Conjunto *c);
+
 bool verificarIgualdade(Conjunto *c1, Conjunto *c2);
 
 int tamanhoConjunto(Conjunto *c);
