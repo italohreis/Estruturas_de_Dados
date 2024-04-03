@@ -13,7 +13,7 @@ StaticList *StaticList_create();
  * Libera os recursos de memória de uma lista estática;
  * @param list ponteiro para a lista estática
  */
-void StaticList_delete(StaticList *);
+void StaticList_delete(StaticList **);
 
 /**
  * Inserção de um elemento na lista;

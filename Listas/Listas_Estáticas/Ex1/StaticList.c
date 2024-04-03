@@ -17,6 +17,11 @@ StaticList *StaticList_create() {
   return list;
 }
 
+void StaticList_delete(StaticList **list) {
+  free(*list);
+  *list = NULL;
+}
+
 /**
  * Inserção de um elemento na lista;
  * @param list ponteiro para a lista estática
