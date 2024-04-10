@@ -10,7 +10,7 @@ struct _list {
   int data[MAX];
 };
 
-StaticList *StaticList_create(int index) {
+StaticList *StaticList_create() {
   StaticList *list = (StaticList *)malloc(sizeof(StaticList));
   
   if (list != NULL) {
@@ -33,15 +33,26 @@ void StaticList_delete(StaticList **list) {
   * @param list2 ponteiro para a segunda lista estática
   * @return true se a concatenação foi bem sucedida, false caso contrário
   */
- StaticList *concatenar(StaticList *list1, StaticList *list2) {
+ StaticList *StaticList_concatenar(StaticList *list1, StaticList *list2) {
 
-  if (list1->qty + list2->qty > MAX) {
-  } 
+    if ((list1->qty + list2->qty) > MAX || list1->qty == 0 || list2->qty == 0) {
+        return NULL;
+    } 
 
+    StaticList *list3 = StaticList_create();
 
+    int i;
+    for (i = 0; i < list1->qty; i++) {
+      StaticList_insert(list3, list1->data[i]);
+    }
+
+    for (i = 0; i < list2->qty; i++) {
+      StaticList_insert(list3, list2->data[i]);
+    }
+  
+  return list3;
 }
  
-
 
 
 /**
@@ -103,21 +114,24 @@ bool StaticList_remove(StaticList *list, int value){
     if (StaticList_is_empty(list)) 
         return false;
 
-    for (i = 0; i <list->qty; i++){
-        if (list->data[i] == value){
+    for (i = 0; i < list->qty; i++) {
+        if (list->data[i] == value) {
             valueM = true;
-            list->data[i] = list->data[i+1];
-            value = list->data[i+1];
+            break;
         }
     }
-    
-    if (valueM == true) {
+
+    if (valueM) {
+        for (i; i < list->qty - 1; i++) {
+            list->data[i] = list->data[i + 1];
+        }
+        
         list->qty--;
         return true;
     }
-    else {
-        return false;
-    }
+    
+    
+    return false;
 }
 
 /**
@@ -145,9 +159,14 @@ bool StaticList_is_full(StaticList *list) {
 }
 
 void StaticList_print(StaticList *list) {
-    int i;
+  int i;
   for (i = 0; i < list->qty; i++) {
-        printf("%d, ", list->data[i]);
+      printf("%d", list->data[i]);
+
+      if (i < list->qty - 1)
+        printf(", ");
   }
+      
   putchar('\n');
+
 }

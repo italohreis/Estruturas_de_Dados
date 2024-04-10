@@ -21,6 +21,9 @@ void StaticList_delete(StaticList **);
  * @param value valor a ser inserido
  * @return true se a inserção foi bem sucedida, false caso contrário
  */
+
+StaticList *StaticList_concatenar(StaticList *, StaticList *);
+
 bool StaticList_insert(StaticList *, int);
 /**
  * Busca por um elemento;
