@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
 #define MAX 5
 
 struct _list {
@@ -9,11 +10,13 @@ struct _list {
   int data[MAX];
 };
 
-StaticList *StaticList_create() {
+StaticList *StaticList_create(int index) {
   StaticList *list = (StaticList *)malloc(sizeof(StaticList));
+  
   if (list != NULL) {
     list->qty = 0;
   }
+
   return list;
 }
 
@@ -21,6 +24,25 @@ void StaticList_delete(StaticList **list) {
   free(*list);
   *list = NULL;
 }
+
+/**
+  * Concatenação de duas listas;
+  * se a concatenação couber em uma lista, uma nova lista é criada e os elementos são copiados para ela;
+  * se a concatenação não couber em uma lista, a concatenação não é realizada e a função retorna false;
+  * @param list1 ponteiro para a primeira lista estática
+  * @param list2 ponteiro para a segunda lista estática
+  * @return true se a concatenação foi bem sucedida, false caso contrário
+  */
+ StaticList *concatenar(StaticList *list1, StaticList *list2) {
+
+  if (list1->qty + list2->qty > MAX) {
+  } 
+
+
+}
+ 
+
+
 
 /**
  * Inserção de um elemento na lista de maneira ordenada crescente;
