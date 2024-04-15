@@ -3,10 +3,9 @@
 
 #define TAM 3
 
-int main() {
-  
-  StaticList *listas[TAM] = {NULL, NULL, NULL};
+//menu
 
+void menu(StaticList *listas[]) {
   char action = 0;
   int number = 0, position = 0, size = 0;
 
@@ -23,6 +22,7 @@ int main() {
     if (listas[position] == NULL) {       //verifica se a lista na posição é nula(nao existe), se for criará uma nova lista na posição
       listas[position] = StaticList_create();
       size++;
+      printf("List create\n");
     }
 
     switch(action) {
@@ -46,6 +46,12 @@ int main() {
       break;
 
     case 'c':
+
+      if (size == TAM) {  //verifica se o tamanho da lista é igual ao tamanho maximo
+        printf("not possible\n");
+        break;
+      }
+
       listas[size] = StaticList_concatenar(listas[number], listas[position]);
       if (listas[size] != NULL) {
         StaticList_print(listas[size]);
@@ -63,10 +69,16 @@ int main() {
 
     default:
       printf("\ninvalid action\n");
-
     }   
    
   } while (action != '0');
+}
+
+int main() {
+  
+  StaticList *listas[TAM] = {NULL, NULL, NULL};
+
+  menu(listas);
     
   return 0;
 }
