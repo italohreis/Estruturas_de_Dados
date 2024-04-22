@@ -60,9 +60,12 @@ bool TLinkedList_insert_end(TLinkedList *list, int value) {
 }
 
 void TLinkedList_print(TLinkedList *list) {
-  TNo *aux;
-  for (aux = list->inicio; aux != NULL; aux = aux->prox) {
+  TNo *aux = list->inicio;
+
+  while(aux != NULL) {
     printf("%d->", aux->info);
+    aux = aux->prox;
   }
+  
   putchar('\n');
 }
