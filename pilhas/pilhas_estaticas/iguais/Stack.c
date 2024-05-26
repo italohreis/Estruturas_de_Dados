@@ -43,19 +43,6 @@ bool Stack_pop(Stack *stack, char *value) {
     return false;
 }
 
-/* bool verificar_palindromo(Stack *stack, char *palavra) {
-    int i, j = 0;
-
-    for(i = strlen(palavra) - 1; i > 0; i--) {
-        if (stack->data[i] != palavra[j++]) {
-            return false;
-        }
-        
-    }
-
-    return true;
-} */
-
 int Stack_topo(Stack *stack) {
     return stack->data[stack->qty - 1];
 }
