@@ -42,7 +42,6 @@ bool Stack_is_empty(Stack *);
  */
 bool Stack_is_full(Stack *);
 
-bool verificar_palindromo(Stack *stack, char *palavra);
 
 
 #endif

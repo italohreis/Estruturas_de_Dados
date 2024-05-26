@@ -2,9 +2,23 @@
 #include "Stack.h"
 #include <string.h>
 
+bool verificar_palindromo(Stack *stack, char *palavra) {
+    int len = strlen(palavra);
+    char value = 0;
+
+    for (int i = 0; i < strlen(palavra); i++) {
+        Stack_pop(stack, &value);
+        if (value != palavra[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int main() {
 
-    char *str = "pablo";
+    char *str = "bob";
 
     Stack *stack = Stack_create(100);
     int i;
@@ -14,14 +28,7 @@ int main() {
         Stack_push(stack, str[i]);
     }
 
-    while (!Stack_is_empty(stack)) {
-        char c;
-        Stack_pop(stack, &c);
-        printf("%c", c);
-    }
-
     printf("\ne um palindromo ? %d\n", verificar_palindromo(stack, str));
-
 
     return 0;
 }

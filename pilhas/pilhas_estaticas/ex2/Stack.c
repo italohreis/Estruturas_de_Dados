@@ -43,7 +43,7 @@ bool Stack_pop(Stack *stack, char *value) {
     return false;
 }
 
-bool verificar_palindromo(Stack *stack, char *palavra) {
+/* bool verificar_palindromo(Stack *stack, char *palavra) {
     int i, j = 0;
 
     for(i = strlen(palavra) - 1; i > 0; i--) {
@@ -54,7 +54,7 @@ bool verificar_palindromo(Stack *stack, char *palavra) {
     }
 
     return true;
-}
+} */
 
 int Stack_topo(Stack *stack) {
     return stack->data[stack->qty - 1];
