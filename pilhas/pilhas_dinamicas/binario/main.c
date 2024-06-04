@@ -31,7 +31,6 @@ void binary(Stack *stack, int numero) {
     }
 }
 
-
 int main() {
 
     Stack *stack = Stack_create();
@@ -41,7 +40,6 @@ int main() {
     scanf("%d", &numero);
 
     binary(stack, numero);
-   
     print(stack);
     
     return 0;
