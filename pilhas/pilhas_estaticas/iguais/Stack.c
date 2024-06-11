@@ -15,7 +15,7 @@ Stack *Stack_create(unsigned int size) {
 
     Stack *stack = (Stack*) malloc(sizeof(Stack));
 
-    stack->data = malloc(sizeof(int) * size);
+    stack->data = malloc(sizeof(char) * size);
     stack->size = size;
     stack->qty = 0;
 
