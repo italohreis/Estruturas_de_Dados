@@ -3,10 +3,10 @@
 #include "static_queue.h"
 
 void preenche(StaticQueue *queue1, StaticQueue *queue2, StaticQueue *retorno) {
+   
 
 
-
-}   
+}
 
 int main() {
     
@@ -14,17 +14,14 @@ int main() {
 
     StaticQueue *queue1 = StaticQueue_create(capacity);
     StaticQueue *queue2 = StaticQueue_create(capacity);
-    StaticQueue *uniao = StaticQueue_create(capacity);
+    StaticQueue *uniao = StaticQueue_create(capacity * 2);
 
-    int i;
+    long i;
     for (i = 0; i < capacity; i++) {
-        StaticQueue_enqueue(queue1, (i));
+        StaticQueue_enqueue(queue1, i);
+        StaticQueue_enqueue(queue2, i +2 );
     }
-
-    for (i = 6; i < 11; i++) {
-        StaticQueue_enqueue(queue2, (i));
-    }
-
+    
     StaticQueue_print(queue1);
     StaticQueue_print(queue2);
 
