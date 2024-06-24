@@ -16,8 +16,8 @@ long StaticQueue_size(const StaticQueue *Q);
 long StaticQueue_capacity(StaticQueue *Q);
 
 bool StaticQueue_enqueue(StaticQueue *Q, int val);
-int StaticQueue_peek(const StaticQueue *Q);
-int StaticQueue_dequeue(StaticQueue *Q);
+void StaticQueue_peek(const StaticQueue *Q, int *val);
+void StaticQueue_dequeue(StaticQueue *Q, int *val);
 
 void StaticQueue_print(const StaticQueue *Q);
 

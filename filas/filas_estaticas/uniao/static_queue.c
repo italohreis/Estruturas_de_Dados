@@ -58,24 +58,21 @@ bool StaticQueue_enqueue(StaticQueue *Q, int val) {
     return true;
 }
 
-int StaticQueue_peek(const StaticQueue *Q) {
+void StaticQueue_peek(const StaticQueue *Q, int *val) {
+    
     if (StaticQueue_is_empty(Q)) {
-        return -1;
+        return;
     }
 
-    return Q->data[Q->begin];
+    *val = Q->data[Q->begin];
 }
 
-int StaticQueue_dequeue(StaticQueue *Q) {
+void StaticQueue_dequeue(StaticQueue *Q, int *val) {
     if (StaticQueue_is_empty(Q)) {
-        return -1;
+        return;
     }
 
-    int val = Q->data[Q->begin];
-    Q->begin = (Q->begin + 1) % Q->capacity;
-    Q->size--;
-
-    return val;
+    *val = Q->data[Q->begin];
 }
 
 void StaticQueue_print(const StaticQueue *Q) {
@@ -83,7 +80,7 @@ void StaticQueue_print(const StaticQueue *Q) {
         return;
     }
 
-    long i = Q->begin;
+    int i = Q->begin;
     do {
         printf("%d ", Q->data[i]);
         i = (i + 1) % Q->capacity;

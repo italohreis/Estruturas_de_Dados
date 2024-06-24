@@ -7,6 +7,11 @@ struct no {
   struct no *prox, *ant;
 };
 
+typedef struct double_linked {
+  struct no *inicio;
+  struct no *fim;
+};
+
 struct no *TNo_createnfill(int info) {
   struct no *novo = (struct no *)malloc(sizeof(struct no));
   if (novo) {
@@ -16,10 +21,6 @@ struct no *TNo_createnfill(int info) {
   }
   return novo;
 }
-struct double_linked {
-  struct no *inicio;
-  struct no *fim;
-};
 
 TDList *TDList_create() {
   TDList *nova = (TDList *)malloc(sizeof(TDList));

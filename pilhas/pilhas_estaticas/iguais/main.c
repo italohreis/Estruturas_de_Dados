@@ -10,16 +10,32 @@ bool is_equal(Stack *stack1, Stack *stack2) {
         return false;
     }
 
-    while (!Stack_is_empty(stack1)) {
+    Stack *aux1 = Stack_create(Stack_size(stack1));
+    Stack *aux2 = Stack_create(Stack_size(stack1));
+    bool isEqual = true;
+
+    while (!Stack_is_empty(stack1) && isEqual) {
         Stack_pop(stack1, &value1);
         Stack_pop(stack2, &value2);
 
+        Stack_push(aux1, value1);
+        Stack_push(aux2, value2);
+
         if (value1 != value2) {
-            return false;
+            isEqual = false;
         }
     }
 
-    return true;
+    //coloca os elementos de volta para as pilhas originais
+    while (!Stack_is_empty(aux1)) {
+        Stack_pop(aux1, &value1);
+        Stack_push(stack1, value1);
+
+        Stack_pop(aux2, &value2);
+        Stack_push(stack2, value2);
+    }
+
+    return isEqual;
 }
 
 int main() {
